@@ -38,7 +38,16 @@ class Converter:
         self.to_convert_entry.grid(row=2)
 
         # Converion button frame (row 3)
+        self.conversion_buttons_frame = Frame(self.converter_frame)
+        self.conversion_buttons_frame.grid(row=3, pady=10)
 
+        self.to_c_button = Button(self.conversion_buttons_frame,
+                                  text="To Centidgrade", font="Arial 10 bold",
+                                  bg="Khakil", padx=10, pady=10)
+        self.to_c_button.grid(row=0, column=0)
+
+
+        
         # answer label row
 
 # main routine
