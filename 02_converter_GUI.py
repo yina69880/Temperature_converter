@@ -1,6 +1,5 @@
 from tkinter import *
 from functools import partial   # To prevent unwanted windows
-
 import random
 
 
@@ -9,15 +8,15 @@ class Converter:
 
         # formatting vaiables...
         background_color = "light blue"
-
+        self.all_calc_list = []
         # converter frame
-        self.converter_frame = Frame(width=300, bg=background_color,
+        self.converter_frame = Frame(width=350, bg=background_color,
                                      pady=10)
         self.converter_frame.grid()
         # temperature converter heading (row 0)
         self.temp_heading_label = Label(self.converter_frame,
                                         text="Temperature Converter",
-                                        font="Arial 16 bold",
+                                        font="Arial 19 bold",
                                         bg=background_color,
                                         padx=10, pady=10)
         self.temp_heading_label.grid(row=0)
@@ -27,7 +26,7 @@ class Converter:
                                              text="Type in the amount to be "
                                                   "converted and then put "
                                                   "one of the buttons below...",
-                                        font="Arial 10 italic", wrap=250,
+                                        font="Arial 10 italic", wrap=290,
                                         justify=LEFT, bg=background_color,
                                         padx=10, pady=10)
         self.temp_instructions_label.grid(row=1)
@@ -112,6 +111,9 @@ class Converter:
                 self.to_convert_entry.configure(bg=error)
 
             # add answer to list for history
+            if answer != "Too Cold!!":
+                self.all_calc_list.append(answer)
+                print(self.all_calc_list)
 
         except ValueError:
             self.converted_label.configure(text="Enter a number!!", fg="red")
@@ -123,6 +125,8 @@ class Converter:
         else:
             rounded = round(to_round, 1)
 
+        return rounded
+
 
 # main routine
 if __name__== "__main__":
@@ -130,3 +134,4 @@ if __name__== "__main__":
     root.title("Temperature Converter")
     something = Converter()
     root.mainloop()
+
