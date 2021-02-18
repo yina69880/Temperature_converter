@@ -28,10 +28,13 @@ else:
     print(all_calculations)
 
     # print items starting starting ar the END of the list
-    if len(all_calculations)
-    print()
+    if len(all_calculations) >= 3:
+        print("*** Most Recent 3 ***")
 
-print("*** Most Recent 3 ***")
-# print items starting starting ar the END of the list
-for item in range(0, 3):
-    print(all_calculations[len(all_calculations) - item - 1])
+        for item in range(0, 3):
+            print(all_calculations[len(all_calculations) - item - 1])
+
+    else:
+        print("*** Items from Newest to Oldest ****")
+        for item in all_calculations:
+            print(all_calculations[len(all_calculations) - all_calculations.index(item)])
