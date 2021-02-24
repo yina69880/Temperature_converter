@@ -86,16 +86,16 @@ class Converter:
 
             # convert to F
             if low == -273 and to_convert >= low:
-                farenheit = (to_convert * 1.8) + 32
+                fahrenheit = (to_convert * 9 / 5) + 32
                 to_convert = self.round_it(to_convert)
-                farenheit = self.round_it(farenheit)
-                answer = "{} degrees C {} degrees F".format(to_convert, farenheit)
+                fahrenheit = self.round_it(fahrenheit)
+                answer = " {} degrees C is {} degrees F".format(to_convert, fahrenheit)
             # convert to C
             elif low == -459 and to_convert >= low:
-                celsius = (to_convert - 32)/1.8
+                celsius = (to_convert - 32) * 5 / 9
                 to_convert = self.round_it(to_convert)
                 celsius = self.round_it(celsius)
-                answer = "{} degrees C {} degrees F".format(to_convert, celsius)
+                answer = " {} degrees F is {} degrees C".format(to_convert, celsius)
 
             else:
                 # input too cold
