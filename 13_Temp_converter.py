@@ -146,8 +146,8 @@ class converter:
 
 class History:
     def __init__(self, partner, calc_history):
-        # This color is Lightish Yellow
-        background = "#EBFF6B"
+        # This color is Lightish Green
+        background = "pale green"
 
         # disable history button
         partner.calc_hist_button.config(state=DISABLED)
@@ -219,8 +219,8 @@ class History:
 
 class Help:
     def __init__(self, partner):
-        # This color is Lightish Yellow
-        background = "#EBFF6B"
+        # This color is Lightish Green
+        background = "pale green"
 
         # disable help button
         partner.help_button.config(state=DISABLED)
@@ -247,8 +247,8 @@ class Help:
         self.help_text.grid(row=1)
 
         # Dismiss button (row 2)
-        self.dismiss_btn = Button(self.help_frame, text="Dismiss", width=10, bg="orange",
-                                  font="arial" "10" "bold", command=partial(self.close_help, partner))
+        self.dismiss_btn = Button(self.help_frame, text="Dismiss", width=10, bg="#C0C0C0",
+                                  font=("Arial" "10" "bold"), command=partial(self.close_help, partner))
         self.dismiss_btn.grid(row=2, pady=10)
 
     def close_help(self, partner):
