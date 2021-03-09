@@ -262,8 +262,8 @@ class Export:
 
         print(calc_history)
 
-        # This color is Lightish Yellow
-        background = "#EBFF6B"
+        # This color is light green
+        background = "pale green"
 
         # disable export button
         partner.export_button.config(state=DISABLED)
