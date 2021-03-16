@@ -9,17 +9,19 @@ class Start:
         self.start_frame.grid()
 
 
-        self.push_me_button = Button(text="push", command=self.to_game)
+        self.push_me_button = Button(text="Push Me", command=self.to_game)
         self.push_me_button.grid(row=0, pady=10)
 
 
     def to_game(self):
 
+        # retrieve starting balance
         starting_balance = 50
         stakes = 1
 
         Game(self, stakes, starting_balance)
 
+        # hide start up windows
         root.withdraw()
 
 class Game:
@@ -70,7 +72,7 @@ class Game:
 
         # Play button row 3
 
-        self.game_play = Button(self.game_frame, text="Spin!", font="Arial 20 bold",
+        self.game_play = Button(self.game_frame, text="Roll!", font="Arial 20 bold",
                                 bg="yellow", width=13)
         self.game_play.grid(row=3)
 
