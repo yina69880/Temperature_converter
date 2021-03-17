@@ -88,12 +88,12 @@ class Game:
         self.start_help_frame.grid(row=5)
 
         # Help and statistics buttons
-        self.start_help_button = Button(self.start_help_frame, text="Help",
+        self.start_help_button = Button(self.start_help_frame, text="Help / Rules",
                                         font="Arial 15 bold",
                                         command=lambda: self.to_help)
         self.start_help_button.grid(row=0, column=0)
 
-        self.start_statistics_button = Button(self.start_help_frame, text="Statistics / Export",
+        self.start_statistics_button = Button(self.start_help_frame, text="Game Records / Stats",
                                               font="Arial 15 bold",
                                               command=lambda: self.to_stats)
         self.start_statistics_button.grid(row=0, column=1, padx=5)

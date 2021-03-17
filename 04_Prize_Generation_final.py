@@ -11,6 +11,7 @@ for item in range(0, NUM_TRIALS):
 
     for thing in range(0,3):
 
+        # radint finds numbers between endpoints , including both end points
         prize_num = random.randint(1,100)
         prize += " "
         if 0 < prize_num <= 5:
@@ -26,7 +27,7 @@ for item in range(0, NUM_TRIALS):
         else:
             prize += "Lead"
 
-    #print("You won {} which is worth {}".format(prize,round_winnings))
+    print("You won {} which is worth {}".format(prize,round_winnings))
     winnings += round_winnings
 
 print("Paid in: {}".format(cost))

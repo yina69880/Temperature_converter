@@ -52,19 +52,19 @@ class Start:
 
         # Low Stakes Button
         self.low_stakes_button = Button(self.stakes_frame, text="Low ($5)",
-                                        font=button_font, bg="#FF9933",
+                                        font=button_font, bg="#FFAF7A",
                                         command=lambda: self.to_game(1))
         self.low_stakes_button.grid(row=0, column=0, pady=10)
 
         # Medium Stakes Button
-        self.med_stakes_button = Button(self.stakes_frame, text="Medium (10$)",
-                                        font=button_font, bg="#FFFF33",
+        self.med_stakes_button = Button(self.stakes_frame, text="Medium ($10)",
+                                        font=button_font, bg="#FFE5B4",
                                         command=lambda: self.to_game(2))
         self.med_stakes_button.grid(row=0, column=1, pady=10, padx=5)
 
         # High Stakes Button
-        self.high_stakes_button = Button(self.stakes_frame, text="High (15$)",
-                                         font=button_font, bg="#09FF33",
+        self.high_stakes_button = Button(self.stakes_frame, text="High ($15)",
+                                         font=button_font, bg="#FFB6C1",
                                          command=lambda: self.to_game(3))
         self.high_stakes_button.grid(row=0, column=2, pady=10, padx=5)
 

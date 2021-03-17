@@ -4,20 +4,24 @@ import random
 
 class Start:
     def __init__(self, parent):
-        self.start_frame = Frame(parent
-                                 )
+
+        # GUI to get started balance and stakes
+        self.start_frame = Frame(padx=10, pady=10)
         self.start_frame.grid()
 
-        self.push_me_button = Button(self.start_frame, text="push", command=self.to_game)
+        self.push_me_button = Button(self.start_frame, text="Push Me", command=self.to_game)
         self.push_me_button.grid(row=0, pady=10)
 
     def to_game(self):
+
+        # retrieve starting balance
         starting_balance = 50
-        stakes = 1
+        stakes = 2
 
         Game(self, stakes, starting_balance)
 
-        self.start_frame.destroy()
+        # hide start up window
+        root.withdraw()
 
 
 class Game:
@@ -26,29 +30,38 @@ class Game:
         print(stakes)
         print(starting_balance)
 
+        # initialise variables
         self.balance = IntVar()
-
+        # set starting balance to amount entered by user at start of game
         self.balance.set(starting_balance)
 
         # Get value of stakes (multiplier for winnings)
         self.multiplier = IntVar()
         self.multiplier.set(stakes)
 
-        # List for holding stats
-        self.round_stats_list = []
-
         # Set up GUI
         self.game_box = Toplevel()
-
-        self.game_box.protocol('WM_DELETE_WINDOW', self.to_quit)
-
-        self.game_frame = Frame(self.game_box, padx=10)
+        self.game_frame = Frame(self.game_box)
         self.game_frame.grid()
+
 
         # Play Heading row 0
         self.game_heading = Label(self.game_frame, text="Play!", font="Arial 20 bold")
         self.game_heading.grid(row=0)
 
+
+        # instructions label
+        self.instructions_label = Label(self.game_frame, wrap=300, justify=LEFT,
+                                        text="Press <enter> or click the 'Open Boxes' button"
+                                             " to reveal the contents of the mystery boxes.",
+                                        font="Arial 10", padx=10, pady=10)
+        self.instructions_label.grid(row=1)
+
+        # Boxes go here
+        box_text = "Arial 16 bold"
+        box_back = "#b9ea96"
+        box_width = 5
+        self.box_frame
         # Help text row 1
         self.game_help = Label(self.game_frame, text="Press 'enter' or 'open boxes to play!",
                                font="Arial 10 italic", fg="red")
