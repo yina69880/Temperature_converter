@@ -143,36 +143,24 @@ class Game:
             prize_num = random.randint(1, 100)
 
             if 0 < prize_num <= 5:
-                prize = PhotoImage(file="gold.gif")
-                prize_list = "Gold\n(${})".format(5 * stakes_multiplier)
+                prizes = "Gold\n(${})".format(5 * stakes_multiplier)
                 round_winnings += stakes_multiplier
             elif 5 < prize_num <= 25:
                 # get silver if number is between 1 and 3
-                prize = PhotoImage(file="silver.gif")
-                prize_list = "Silver\n(${})".format(2 * stakes_multiplier)
+                prizes = "Silver\n(${})".format(2 * stakes_multiplier)
                 round_winnings += stakes_multiplier
             elif 25 < prize_num <= 65:
-                prize = PhotoImage(file="copper.gif")
-                prize_list = "Copper\n(${})".format(1 * stakes_multiplier)
+                prizes = "Copper\n(${})".format(1 * stakes_multiplier)
                 round_winnings += stakes_multiplier
             else:
-                prize = PhotoImage(file="lead.gif")
-                prize_list = "Lead\n$0"
+                prizes = "Lead\n$0"
 
-            prizes.append(prize)
-            stats_prizes.append(prize_list)
-
-        photo1 = prizes[0]
-        photo2 = prizes[1]
-        photo3 = prizes[2]
+            stats_prizes.append(prizes)
 
         # Display prizes...
-        self.prize1_label.config(image=photo1)
-        self.prize1_label.photo = photo1
-        self.prize2_label.config(image=photo2)
-        self.prize2_label.photo = photo2
-        self.prize3_label.config(image=photo3)
-        self.prize3_label.photo = photo3
+        self.prize1_label.config(text=prizes[0])
+        self.prize2_label.config(text=prizes[1])
+        self.prize3_label.config(text=prizes[2])
 
         # Deduct cost of game
         current_balance -= 5 * stakes_multiplier
