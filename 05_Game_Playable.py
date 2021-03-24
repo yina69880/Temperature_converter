@@ -46,7 +46,8 @@ class Game:
 
 
         # Play Heading row 0
-        self.game_heading = Label(self.game_frame, text="Play!", font="Arial 20 bold")
+        self.game_heading = Label(self.game_frame, text="Play!", font="Arial 24 bold", pady=10
+                                  , padx=10)
         self.game_heading.grid(row=0)
 
 
@@ -61,42 +62,25 @@ class Game:
         box_text = "Arial 16 bold"
         box_back = "#b9ea96"
         box_width = 5
-        self.box_frame
-        # Help text row 1
-        self.game_help = Label(self.game_frame, text="Press 'enter' or 'open boxes to play!",
-                               font="Arial 10 italic", fg="red")
-        self.game_help.grid(row=1, pady=10)
-
-        # The photo winnings frame row 2
-
         self.game_box_frame = Frame(self.game_frame)
         self.game_box_frame.grid(row=2, pady=10)
 
-        photo = PhotoImage(file="question.gif")
-
-        self.prize1_label = Label(self.game_box_frame, image=photo,
+        self.prize1_label = Label(self.game_box_frame,
                                   padx=10, pady=10)
-        self.prize1_label.photo = photo
         self.prize1_label.grid(row=0, column=0)
 
-        self.prize2_label = Label(self.game_box_frame, image=photo,
+        self.prize2_label = Label(self.game_box_frame,
                                   padx=10, pady=10)
-        self.prize2_label.photo = photo
         self.prize2_label.grid(row=0, column=1, padx=10)
 
-        self.prize3_label = Label(self.game_box_frame, image=photo,
+        self.prize3_label = Label(self.game_box_frame,
                                   padx=10, pady=10)
-        self.prize3_label.photo = photo
         self.prize3_label.grid(row=0, column=2)
 
         # Play button row 3
 
         self.game_play = Button(self.game_frame, text="Spin!", font="Arial 20 bold",
-                                bg="yellow", width=13, command=self.reveal_boxes)
-        self.game_play.grid(row=3)
-
-        self.game_play.focus()
-        self.game_play.bind('<Return>', lambda e: self.reveal_boxes())
+                                bg="yellow", width=20, command=self.reveal_boxes)
         self.game_play.grid(row=3)
 
         # Text that shows ur starting balance. Row 4
@@ -105,24 +89,64 @@ class Game:
                      "will you win?".format(stakes * 5)
 
         self.game_balance = Label(self.game_frame, text=start_text,
-                                  font="arial 15 bold", fg="green", pady=10)
-        self.game_balance.grid(row=4)
+                                  font="Arial 12 bold", fg="green", wrap=300, justify=LEFT)
+        self.game_balance.grid(row=4, pady=10)
 
         # Help and Game stats button row 5
 
-        self.start_help_frame = Frame(self.game_frame, pady=10)
-        self.start_help_frame.grid(row=5)
+        self.start_help_export_frame = Frame(self.game_frame)
+        self.start_help_export_frame.grid(row=5, pady=10)
 
         # Help and statistics buttons
-        self.start_help_button = Button(self.start_help_frame, text="Help",
-                                        font="Arial 15 bold",
-                                        command=lambda: self.to_help)
-        self.start_help_button.grid(row=0, column=0)
+        self.start_help_button = Button(self.start_help_export_frame, text="Help",
+                                        font="Arial 15 bold", bg="#808080", fg="white")
+        self.start_help_button.grid(row=0, column=0, padx=2)
 
-        self.start_statistics_button = Button(self.start_help_frame, text="Statistics / Export",
-                                              font="Arial 15 bold",
-                                              command=lambda: self.to_stats)
-        self.start_statistics_button.grid(row=0, column=1, padx=5)
+        self.start_statistics_button = Button(self.start_help_export_frame, text="Statistics / Export",
+                                              font="Arial 15 bold", bg="#003366",
+                                              fg="white")
+        self.start_statistics_button.grid(row=0, column=1, padx=2)
+
+        def reveal_boxes(self):
+            # retrieve the balance from the initial function...
+            current_balance = self.balance.get()
+            stakes_multiplier = self.multiplier.get()
+
+            round_winnings = 0
+            prizes = []
+            for thing in range(0, 3):
+                prize_num = random.randint(1, 100)
+
+                if 0 < prize_num <= 5:
+                    prize = "Gold\n(${})".format(5 * stakes_multiplier)
+                    round_winnings += stakes_multiplier
+                elif 5 < prize_num <= 25:
+                    # get silver if number is between 1 and 3
+                    prize = "Silver\n(${})".format(2 * stakes_multiplier)
+                    round_winnings += stakes_multiplier
+                elif 25 < prize_num <= 65:
+                    prize = "Copper\n(${})".format(1 * stakes_multiplier)
+                    round_winnings += stakes_multiplier
+                else:
+                    prize = "Lead\n$0"
+
+                prizes.append(prize)
+
+            # Display prizes...
+            self.prize1_label.config(text=prizes[0])
+            self.prize2_label.config(text=prizes[1])
+            self.prize3_label.config(text=prizes[2])
+
+
+
+        # Help text row 1
+        self.game_help = Label(self.game_frame, text="Press 'enter' or 'open boxes to play!",
+                               font="Arial 10 italic", fg="red")
+        self.game_help.grid(row=1, pady=10)
+
+
+
+
 
         # Quit button
         self.quit_button = Button(self.game_frame, text="Quit", fg="white",
@@ -130,37 +154,17 @@ class Game:
                                   command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=6, pady=10)
 
-    def reveal_boxes(self):
 
-        current_balance = self.balance.get()
-        stakes_multiplier = self.multiplier.get()
-
-        round_winnings = 0
-        prizes = []
-        stats_prizes = []
-        for thing in range(0, 3):
-
-            prize_num = random.randint(1, 100)
-
-            if 0 < prize_num <= 5:
-                prizes = "Gold\n(${})".format(5 * stakes_multiplier)
-                round_winnings += stakes_multiplier
-            elif 5 < prize_num <= 25:
-                # get silver if number is between 1 and 3
-                prizes = "Silver\n(${})".format(2 * stakes_multiplier)
-                round_winnings += stakes_multiplier
-            elif 25 < prize_num <= 65:
-                prizes = "Copper\n(${})".format(1 * stakes_multiplier)
-                round_winnings += stakes_multiplier
-            else:
-                prizes = "Lead\n$0"
-
-            stats_prizes.append(prizes)
 
         # Display prizes...
-        self.prize1_label.config(text=prizes[0])
-        self.prize2_label.config(text=prizes[1])
-        self.prize3_label.config(text=prizes[2])
+        box_width = 5
+        self.box_frame = Frame(self.game_frame)
+        self.box_frame.grid(row=2, pady=10)
+
+        self.prize1_label = Label(self.box_frame, text="?\n", font=box_text,
+                               bg=box_back, width=box_width, padx=10, pady=10)
+        self.prize1_label.grid(row=0, column=0)
+
 
         # Deduct cost of game
         current_balance -= 5 * stakes_multiplier
