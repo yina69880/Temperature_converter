@@ -35,7 +35,7 @@
       <file leaf-file-name="02_start_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/02_start_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
+            <state relative-caret-position="1139">
               <caret line="68" column="70" selection-start-line="52" selection-start-column="8" selection-end-line="68" selection-end-column="70" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -47,8 +47,18 @@
       <file leaf-file-name="05_Game_Playable.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/05_Game_Playable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="134" column="31" selection-start-line="134" selection-start-column="31" selection-end-line="134" selection-end-column="31" />
+            <state relative-caret-position="617">
+              <caret line="103" column="51" selection-start-line="103" selection-start-column="51" selection-end-line="103" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="00_sandbox.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/00_sandbox.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -57,7 +67,7 @@
       <file leaf-file-name="04_Prize_Generation_final.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/04_Prize_Generation_final.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="442">
               <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding />
             </state>
@@ -68,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/AA_compiled_game.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
-              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <caret line="171" column="44" selection-start-line="171" selection-start-column="43" selection-end-line="171" selection-end-column="44" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -134,6 +144,7 @@
         <option value="$PROJECT_DIR$/04_Prize_Generation_final.py" />
         <option value="$PROJECT_DIR$/02_start_GUI.py" />
         <option value="$PROJECT_DIR$/AA_compiled_game.py" />
+        <option value="$PROJECT_DIR$/00_sandbox.py" />
         <option value="$PROJECT_DIR$/05_Game_Playable.py" />
       </list>
     </option>
@@ -197,7 +208,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Python.05_Game_Playable">
+  <component name="RunManager" selected="Python.AA_compiled_game">
     <configuration default="false" name="03_Game_GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -426,9 +437,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.05_Game_Playable" />
-        <item index="1" class="java.lang.String" itemvalue="Python.04_Prize_Generation_final" />
-        <item index="2" class="java.lang.String" itemvalue="Python.AA_compiled_game" />
+        <item index="0" class="java.lang.String" itemvalue="Python.AA_compiled_game" />
+        <item index="1" class="java.lang.String" itemvalue="Python.05_Game_Playable" />
+        <item index="2" class="java.lang.String" itemvalue="Python.04_Prize_Generation_final" />
         <item index="3" class="java.lang.String" itemvalue="Python.02_start_GUI" />
         <item index="4" class="java.lang.String" itemvalue="Python.03_Game_GUI" />
       </list>
@@ -486,7 +497,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/01_Temperature_converter/02_converter_GUI.py" />
     <entry file="file://$PROJECT_DIR$/01_Temperature_converter/07_most_recent.py" />
     <entry file="file://$PROJECT_DIR$/01_Temperature_converter/08_reg_match.py" />
     <entry file="file://$PROJECT_DIR$/01_Temperature_converter/03_c_tof_v1.py" />
@@ -552,7 +562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1649">
           <caret line="98" column="66" selection-start-line="98" selection-start-column="66" selection-end-line="98" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -566,7 +575,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/02_start_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
+        <state relative-caret-position="1139">
           <caret line="68" column="70" selection-start-line="52" selection-start-column="8" selection-end-line="68" selection-end-column="70" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -578,6 +587,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="1549" column="0" selection-start-line="1549" selection-start-column="0" selection-end-line="1549" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04_Prize_Generation_final.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/00_sandbox.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -585,25 +609,17 @@
     <entry file="file://$PROJECT_DIR$/AA_compiled_game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <caret line="171" column="44" selection-start-line="171" selection-start-column="43" selection-end-line="171" selection-end-column="44" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/04_Prize_Generation_final.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/05_Game_Playable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="134" column="31" selection-start-line="134" selection-start-column="31" selection-end-line="134" selection-end-column="31" />
+        <state relative-caret-position="617">
+          <caret line="103" column="51" selection-start-line="103" selection-start-column="51" selection-end-line="103" selection-end-column="51" />
           <folding />
         </state>
       </provider>
