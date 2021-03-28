@@ -9,7 +9,7 @@ class Start:
         self.start_frame = Frame(padx=10, pady=10)
         self.start_frame.grid()
 
-        self.push_me_button = Button(self.start_frame, text="Push Me", command=self.to_game)
+        self.push_me_button = Button(text="Push Me", command=self.to_game)
         self.push_me_button.grid(row=0, pady=10)
 
     def to_game(self):
@@ -26,7 +26,6 @@ class Start:
 
 class Game:
     def __init__(self, partner, stakes, starting_balance):
-
         print(stakes)
         print(starting_balance)
 
@@ -46,9 +45,10 @@ class Game:
 
 
         # Play Heading row 0
-        self.game_heading = Label(self.game_frame, text="Play!", font="Arial 24 bold", pady=10
-                                  , padx=10)
-        self.game_heading.grid(row=0)
+        self.heading_label = Label(self.game_frame, text="Play!",
+                                  font="Arial 24 bold", pady=10,
+                                  padx=10)
+        self.heading_label.grid(row=0)
 
 
         # instructions label
@@ -62,25 +62,24 @@ class Game:
         box_text = "Arial 16 bold"
         box_back = "#b9ea96"
         box_width = 5
-        self.game_box_frame = Frame(self.game_frame)
-        self.game_box_frame.grid(row=2, pady=10)
+        self.box_frame = Frame(self.game_frame)
+        self.box_frame.grid(row=2, pady=10)
 
-        self.prize1_label = Label(self.game_box_frame,
-                                  padx=10, pady=10)
+        self.prize1_label = Label(self.box_frame, text="?\n", font=box_text,
+                                  bg=box_back, width=box_width, padx=10, pady=10)
         self.prize1_label.grid(row=0, column=0)
 
-        self.prize2_label = Label(self.game_box_frame,
-                                  padx=10, pady=10)
-        self.prize2_label.grid(row=0, column=1, padx=10)
+        self.prize2_label = Label(self.box_frame, text="?\n", font=box_text,
+                                  bg=box_back, width=box_width, padx=10, pady=10)
+        self.prize2_label.grid(row=0, column=1)
 
-        self.prize3_label = Label(self.game_box_frame,
-                                  padx=10, pady=10)
+        self.prize3_label = Label(self.box_frame, text="?\n", font=box_text,
+                                  bg=box_back, width=box_width, padx=10, pady=10)
         self.prize3_label.grid(row=0, column=2)
 
         # Play button row 3
-
         self.game_play = Button(self.game_frame, text="Spin!", font="Arial 20 bold",
-                                bg="yellow", width=20, command=self.reveal_boxes)
+                                bg="#FFFF33", width=13, command=self.reveal_boxes, pady=10, padx=10)
         self.game_play.grid(row=3)
 
         # Text that shows ur starting balance. Row 4
@@ -93,7 +92,6 @@ class Game:
         self.game_balance.grid(row=4, pady=10)
 
         # Help and Game stats button row 5
-
         self.help_export_frame = Frame(self.game_frame)
         self.help_export_frame.grid(row=5, pady=10)
 
@@ -106,30 +104,31 @@ class Game:
                                               fg="white")
         self.start_statistics_button.grid(row=0, column=1, padx=2)
 
-        def reveal_boxes(self):
-            # retrieve the balance from the initial function...
-            current_balance = self.balance.get()
-            stakes_multiplier = self.multiplier.get()
+    def reveal_boxes(self):
+        # retrieve the balance from the initial function...
+        current_balance = self.balance.get()
+        stakes_multiplier = self.multiplier.get()
 
-            round_winnings = 0
-            prizes = []
-            for thing in range(0, 3):
-                prize_num = random.randint(1, 100)
+        round_winnings = 0
+        prizes = []
+        for thing in range(0, 3):
+            prize_num = random.randint(1, 100)
 
-                if 0 < prize_num <= 5:
-                    prize = "Gold\n(${})".format(5 * stakes_multiplier)
-                    round_winnings += stakes_multiplier
-                elif 5 < prize_num <= 25:
-                    # get silver if number is between 1 and 3
-                    prize = "Silver\n(${})".format(2 * stakes_multiplier)
-                    round_winnings += stakes_multiplier
-                elif 25 < prize_num <= 65:
-                    prize = "Copper\n(${})".format(1 * stakes_multiplier)
-                    round_winnings += stakes_multiplier
-                else:
-                    prize = "Lead\n$0"
+            if 0 < prize_num <= 5:
+                prize = "Gold\n(${})".format(5 * stakes_multiplier)
+                round_winnings += 5 * stakes_multiplier
+            elif 5 < prize_num <= 25:
+                prize = "Silver\n(${})".format(2 * stakes_multiplier)
+                round_winnings += 2 * stakes_multiplier
+            elif 25 < prize_num <= 65:
+                prize = "Copper\n(${})".format(1 * stakes_multiplier)
+                round_winnings += stakes_multiplier
+            else:
+                prize = "Lead\n$0"
 
-                prizes.append(prize)
+            prizes.append(prize)
+
+            print(prizes)
 
             # Display prizes...
             self.prize1_label.config(text=prizes[0])
