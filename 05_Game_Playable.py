@@ -104,6 +104,11 @@ class Game:
                                               fg="white")
         self.start_statistics_button.grid(row=0, column=1, padx=2)
 
+        #Quit Button
+        self.quit_button = Button(self.game_frame, text="Quit", fg="white",
+                                 bg="#660000", font="Arial 15 bold", width=20, padx=10, pady=10, commabd=self.to_quit)
+        self.quit_button.grid(row=6, pady=10)
+
     def reveal_boxes(self):
         # retrieve the balance from the initial function...
         current_balance = self.balance.get()
@@ -111,46 +116,65 @@ class Game:
 
         round_winnings = 0
         prizes = []
+        backgrounds = []
         for thing in range(0, 3):
             prize_num = random.randint(1, 100)
 
             if 0 < prize_num <= 5:
                 prize = "Gold\n(${})".format(5 * stakes_multiplier)
+                back_colour = '#CEA935'
                 round_winnings += 5 * stakes_multiplier
             elif 5 < prize_num <= 25:
                 prize = "Silver\n(${})".format(2 * stakes_multiplier)
+                back_colour = '#B7B7B5'
                 round_winnings += 2 * stakes_multiplier
             elif 25 < prize_num <= 65:
                 prize = "Copper\n(${})".format(1 * stakes_multiplier)
+                back_colour = '#BC7F61'
                 round_winnings += stakes_multiplier
             else:
                 prize = "Lead\n$0"
+                back_colour = '#595E71'
 
             prizes.append(prize)
-
+            backgrounds.append(back_colour)
             print(prizes)
 
-            # Display prizes...
-            self.prize1_label.config(text=prizes[0])
-            self.prize2_label.config(text=prizes[1])
-            self.prize3_label.config(text=prizes[2])
+        # Display prizes...
+        self.prize1_label.config(text=prizes[0], bg=backgrounds[0])
+        self.prize2_label.config(text=prizes[1], bg=backgrounds[1])
+        self.prize3_label.config(text=prizes[2], bg=backgrounds[2])
 
-            # Deduct cost of game
-            current_balance -= 5 * stakes_multiplier
+        # Deduct cost of game
+        current_balance -= 5 * stakes_multiplier
 
-            # Add winnings
-            current_balance += round_winnings
+        # Add winnings
+        current_balance += round_winnings
 
-            # Set balnce to new balance
-            self.balance.set(current_balance)
+        # Set balnce to new balance
+        self.balance.set(current_balance)
 
-            balance_statement = "Game Cost: ${} \nPayback: ${} \n" \
-                                "Current Balance: ${}".format(5 * stakes_multiplier,
-                                                              round_winnings,
-                                                              current_balance)
+        balance_statement = "Game Cost: ${} \nPayback: ${} \n" \
+                            "Current Balance: ${}".format(5 * stakes_multiplier,
+                                                          round_winnings,
+                                                          current_balance)
 
-            # Edit label so users can see their new balance
-            self.game_balance.configure(text=balance_statement)
+        # Edit label so users can see their new balance
+        self.game_balance.configure(text=balance_statement)
+
+        if current_balance < 5 * stakes_multiplier:
+            self.play_button.config(state=DISABLED)
+            self.game_box.focus()
+            self.play_button.config(text="Game Over")
+
+            balance_statement = "Current Balance: ${}\n" \
+                                "Your balance is too low. you can only quit " \
+                                "or view your stats. Sorry about that.".format(current_balance)
+            self.balance_label.config(fg="#660000", font="Arial 10 bold",
+                                      text=balance_statement)
+
+    def to_quit(self):
+        root.destroy()
 
 
 
