@@ -21,7 +21,7 @@ class Start:
         Game(self, stakes, starting_balance)
 
         # hide start up window
-        root.withdraw()
+        self.start_frame.destroy()
 
 
 class Game:
@@ -40,6 +40,11 @@ class Game:
 
         # Set up GUI
         self.game_box = Toplevel()
+
+        # if users press cross at top, game quits
+        self.game_box.protocol('WM_DELETE_WINDOW', self.to_quit)
+
+
         self.game_frame = Frame(self.game_box)
         self.game_frame.grid()
 
@@ -80,7 +85,11 @@ class Game:
         # Play button row 3
         self.game_play = Button(self.game_frame, text="Spin!", font="Arial 20 bold",
                                 bg="#FFFF33", width=13, command=self.reveal_boxes, pady=10, padx=10)
-        self.game_play.grid(row=3)
+
+        # bind button to <enter>
+        self.game_play.focus()
+        self.game_play.bind('<Return>', lambda  e: self.reveal_boxes())
+        self.game_play.grid(row=0)
 
         # Text that shows ur starting balance. Row 4
 
@@ -106,10 +115,12 @@ class Game:
 
         #Quit Button
         self.quit_button = Button(self.game_frame, text="Quit", fg="white",
-                                 bg="#660000", font="Arial 15 bold", width=20, padx=10, pady=10, commabd=self.to_quit)
+                                 bg="#660000", font="Arial 15 bold", width=20,
+                                padx=10, pady=10, commabd=self.to_quit)
         self.quit_button.grid(row=6, pady=10)
 
     def reveal_boxes(self):
+
         # retrieve the balance from the initial function...
         current_balance = self.balance.get()
         stakes_multiplier = self.multiplier.get()
@@ -163,14 +174,14 @@ class Game:
         self.game_balance.configure(text=balance_statement)
 
         if current_balance < 5 * stakes_multiplier:
-            self.play_button.config(state=DISABLED)
+            self.game_play.config(state=DISABLED)
             self.game_box.focus()
-            self.play_button.config(text="Game Over")
+            self.game_play.config(text="Game Over")
 
             balance_statement = "Current Balance: ${}\n" \
                                 "Your balance is too low. you can only quit " \
                                 "or view your stats. Sorry about that.".format(current_balance)
-            self.balance_label.config(fg="#660000", font="Arial 10 bold",
+            self.game_balance.config(fg="#660000", font="Arial 10 bold",
                                       text=balance_statement)
 
     def to_quit(self):
